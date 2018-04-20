@@ -1,0 +1,15 @@
+Language: C
+Description: Multi-threaded Proxy Server Program
+			 Server listens for client requests and forks child processes to handle multiple clients simultaneously.
+			 Client generates multithreaded HTTP requests to send to server.
+			 Server compares client requests against blacklist and returns "forbidden" error upon match.
+			 Server uses DNS lookup to fetch web site IP address and forward client's HTTP request then returns content to client
+			 Server capable of handling requests from actual web browsers if configured as a proxy in the web browser
+			 All socket communications over TCP.
+
+myclient.c: Client program that generates multithreaded requests in the form of URLs and chunk numbers which it send to server over TCP.
+
+myserver.c: Server program that binds listening socket, accepts requests from client program in the form of file names and chunk numbers 
+			Returns the parts of the requested files back to the client.
+myunp.c: Wrapper functions for C POSIX socketlibrary
+myunp.h: Header for wrapper functions in myunp.c
